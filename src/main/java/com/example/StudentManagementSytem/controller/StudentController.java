@@ -1,6 +1,7 @@
 package com.example.StudentManagementSytem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import com.example.StudentManagementSytem.service.StudentService;
 import java.util.List;
 import com.example.StudentManagementSytem.entity.Student;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/StuManageSys")
 
@@ -64,7 +65,12 @@ public class StudentController {
     public String deleteStudent(@PathVariable int rollNo) {
     	studentService.deleteStudentById(rollNo);
     	return "Deleted Succesfully";
-    	
+    }
+    
+    @DeleteMapping("delete-all")
+    public ResponseEntity<String> deleteAllStudent() {
+    	studentService.deleteAllStudent();
+    	return ResponseEntity.ok("Deleted All records");
     }
 	
 }

@@ -15,6 +15,6 @@ public interface StudentService {
 	public String updateStudent(Student student);
 	
 	public String deleteStudentById(int rollNo);
-	
 
+	public void deleteAllStudent();
 }

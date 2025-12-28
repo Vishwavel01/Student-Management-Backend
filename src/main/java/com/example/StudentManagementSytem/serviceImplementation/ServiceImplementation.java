@@ -1,6 +1,8 @@
 package com.example.StudentManagementSytem.serviceImplementation;
 
 import java.util.List;
+
+import org.hibernate.annotations.DialectOverride.OverridesAnnotation;
 import org.springframework.stereotype.Service;
 
 import com.example.StudentManagementSytem.exception.StudentNotFoundException;
@@ -53,5 +55,11 @@ public class ServiceImplementation implements StudentService {
 		studentRepositary.deleteById(rollNo);
 		return "Deleted Successfully";
 	}
+	
+	@Override
+	public void deleteAllStudent() {
+		studentRepositary.deleteAll();
+	}
+	
 
 }
