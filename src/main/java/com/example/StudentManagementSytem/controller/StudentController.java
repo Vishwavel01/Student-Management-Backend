@@ -17,7 +17,7 @@ import com.example.StudentManagementSytem.service.StudentService;
 import java.util.List;
 import com.example.StudentManagementSytem.entity.Student;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"http://localhost:3000", "https://www.your-frontend.com"})
 @RestController
 @RequestMapping("/StuManageSys")
 
