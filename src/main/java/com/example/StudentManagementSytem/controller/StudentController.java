@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.StudentManagementSytem.service.StudentService;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
 import com.example.StudentManagementSytem.entity.Student;
 
 @RestController
@@ -46,29 +49,35 @@ public class StudentController {
 		return studentService.getStudentById(rollNo);
 	}
 	
-	//RestAPI to create new student record 
-    @PostMapping("/student/add")
-	public String createStudent(@RequestBody Student student) {
-       studentService.createStudent(student);
-       return "Created Succesfully";
+	@PostMapping("/student/add")
+	public ResponseEntity<Map<String, String>> createStudent(@RequestBody Student student) {
+	    studentService.createStudent(student);
+	    // Returns: { "message": "Created Successfully" }
+	    return ResponseEntity.ok(Collections.singletonMap("message", "Created Successfully"));
 	}
-    
-    @PutMapping("/student/update")
-    public String updateStudent(@RequestBody Student student) {
-    	studentService.updateStudent(student);
-    	return "Updated Succesfully";
-    }
-    
-    @DeleteMapping("/student/delete/{rollNo}")
-    public String deleteStudent(@PathVariable int rollNo) {
-    	studentService.deleteStudentById(rollNo);
-    	return "Deleted Succesfully";
-    }
-    
-    @DeleteMapping("delete-all")
-    public ResponseEntity<String> deleteAllStudent() {
-    	studentService.deleteAllStudent();
-    	return ResponseEntity.ok("Deleted All records");
-    }
+
+	// 2. UPDATE: Return JSON instead of String
+	@PutMapping("/student/update")
+	public ResponseEntity<Map<String, String>> updateStudent(@RequestBody Student student) {
+	    studentService.updateStudent(student);
+	    // Returns: { "message": "Updated Successfully" }
+	    return ResponseEntity.ok(Collections.singletonMap("message", "Updated Successfully"));
+	}
+
+	// 3. DELETE: Return JSON instead of String
+	@DeleteMapping("/student/delete/{rollNo}")
+	public ResponseEntity<Map<String, String>> deleteStudent(@PathVariable int rollNo) {
+	    studentService.deleteStudentById(rollNo);
+	    // Returns: { "message": "Deleted Successfully" }
+	    return ResponseEntity.ok(Collections.singletonMap("message", "Deleted Successfully"));
+	}
+
+	// 4. DELETE ALL: Return JSON instead of String
+	@DeleteMapping("delete-all")
+	public ResponseEntity<Map<String, String>> deleteAllStudent() {
+	    studentService.deleteAllStudent();
+	    // Returns: { "message": "Deleted All records" }
+	    return ResponseEntity.ok(Collections.singletonMap("message", "Deleted All records"));
+	}
 	
 }
