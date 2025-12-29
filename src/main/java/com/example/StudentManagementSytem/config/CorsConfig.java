@@ -16,7 +16,7 @@ public class CorsConfig {
                 registry.addMapping("/**") // Apply to all endpoints
                         .allowedOrigins(
                                 "http://localhost:4200",      // Your Localhost Frontend (e.g., React/Angular)
-                                "https://www.your-frontend.com" // Your Deployed Frontend URL
+                                "https://studentmanageappp.netlify.app" // Your Deployed Frontend URL
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS","PATCH")
                         .allowedHeaders("*")
