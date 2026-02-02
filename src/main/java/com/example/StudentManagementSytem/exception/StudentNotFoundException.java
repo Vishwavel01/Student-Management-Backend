@@ -12,7 +12,4 @@ public class StudentNotFoundException extends RuntimeException {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
-
-
-	
 }
